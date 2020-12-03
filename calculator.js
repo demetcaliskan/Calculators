@@ -9,12 +9,15 @@ app.get("/", function(req, res) {
 });
 
 app.post("/", function(req, res) {
-  var num1 = Number(req.body.num1);
-  var num2 = Number(req.body.num2);
-  var result = num1 + num2;
+  var result = calculate(Number(req.body.num1), Number(req.body.num2));
   res.send("The result is: "+result);
 });
 
 app.listen(3000, function() {
   console.log("Example app listening at http://localhost:3000");
 });
+
+function calculate(num1, num2) {
+  var result = num1 + num2;
+  return result;
+}
