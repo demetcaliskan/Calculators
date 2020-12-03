@@ -10,6 +10,14 @@ app.get("/", function(req, res) {
 
 calculate();
 
+app.get("/bmicalculator", function(req, res) {
+  res.sendFile(__dirname + "/bmiCalculator.html");
+});
+
+bmiCalculate();
+
+
+
 app.listen(3000, function() {
   console.log("Example app listening at http://localhost:3000");
 });
@@ -22,5 +30,11 @@ function calculate() {
 }
 
 function bmiCalculate() {
-
+  app.post("/bmicalculator", function(req, res) {
+    var weight = Number(req.body.weight);
+    var height = Number(req.body.height);
+    var heightsq = height * height;
+    var result = weight/heightsq;
+    res.send("Your BMI is: "+result);
+  });
 }
